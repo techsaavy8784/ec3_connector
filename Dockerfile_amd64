@@ -1,0 +1,8 @@
+FROM alpine:latest
+
+ADD ca3_amd64 ./uc_ca3
+RUN mkdir /root/tmp_images
+
+ADD .env.uc_ca3_docker ./.env.uc_ca3
+EXPOSE 9200
+ENTRYPOINT ["./uc_ca3"]

@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  fhir:
+    image: dhf0820/uc_ca3_amd64:230117-1
+    ports:
+      - "0.0.0.0:20103:9200"
+    environment:
+      #CONFIG_ADDRESS: "http://docker1.ihids.com:20100/api/rest/v1"
+      CONFIG_ADDRESS: "http://uc_core:9200/api/rest/v1"
+      SERVICE_NAME: "uc_fhir4"
+      SERVICE_VERSION: "local_test"
+      API: "RESTFUL"
+    volumes:
+      - fhir4-data:/data
+    networks:
+      - uc_attachable
+volumes:
+  fhir4-data:
+networks:
+  uc_attachable:
+    external: true

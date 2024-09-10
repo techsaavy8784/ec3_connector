@@ -1,0 +1,11 @@
+Overview of ConnectorCerner
+
+Process:
+    Retrieves base configuration from core
+        a. The FhirSystem to use is in the header of the get{resource}, find{resource}, post{Resource}, and put{resource}
+    Process find{resource} (resource_handler.go)
+        Determine the actual resource being requested from the {resource} param of the url 	params := mux.Vars(r)["resource"]
+        Read the body of the request which contains the FhirSystem to use
+        Retrieve the jwtoken from the header and validate it (fail if invalid)
+        Retrieve and save the queryString from r.URL.RequestURI()
+

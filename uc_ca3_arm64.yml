@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  ca3:
+    image: dhf0820/ca_3_arm64:mac230117_1    #dhf0820/uc_fhir4_arm64:220925.0
+    ports:
+      - "0.0.0.0:20103:9200"
+    environment:
+      CONFIG_ADDRESS: "http://192.168.1.152:30300/api/rest/v1"
+      SERVICE_NAME: "uc_ca3"
+      SERVICE_VERSION: "local_test"
+      COMPANY: "test"
+      ACCESS_SECRET: "I am so blessed Debbie loves me!"
+      API: "RESTFUL"
+    volumes:
+      - cerner-data:/data
+    networks:
+      - uc_attachable
+volumes:
+  cerner-data:
+networks:
+  uc_attachable:
+    external: true
+
